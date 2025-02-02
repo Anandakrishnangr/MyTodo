@@ -2,6 +2,7 @@
 import { Input, Button } from '@/components'
 import React, { useState } from 'react'
 import { useAuth } from '../context/authContext';
+import withAccessControl from '@/hooks/withAccessControl';
 
 const Login = () => {
   const { login } = useAuth();
@@ -58,4 +59,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withAccessControl(Login,{public:true})

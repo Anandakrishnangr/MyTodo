@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Input, Button } from "@/components";
+import withAccessControl from "@/hooks/withAccessControl";
 
 const Signup = () => {
   // State to manage form input values
@@ -84,4 +85,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withAccessControl(Signup,{public:true});

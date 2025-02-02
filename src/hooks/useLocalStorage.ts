@@ -6,7 +6,7 @@ interface UseLocalStorageProps<T> {
   initialValue: T;
 }
 
-const useLocalStorage = <T>({ key, initialValue }: UseLocalStorageProps<T>): [T, (value: T | ((val: T) => T)) => void] => {
+const  useLocalStorage = <T>({ key, initialValue }: UseLocalStorageProps<T>): [T, (value: T | ((val: T) => T)) => void] => {
   
 
   const [state, setState] = useState<T>(() => {

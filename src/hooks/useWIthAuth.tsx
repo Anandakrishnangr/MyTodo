@@ -8,7 +8,7 @@ function withAuth<T extends Record<string, any>>(WrappedComponent: React.Compone
   const ProtectedComponent: React.FC<T> = (props) => {
     const { isAuthenticated } = useAuth();
     const router = useRouter();
-
+console.log(isAuthenticated);
     useEffect(() => {
       if (!isAuthenticated) {
         router.replace('/login'); // Use `replace` to avoid history stacking

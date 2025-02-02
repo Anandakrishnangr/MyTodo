@@ -1,6 +1,6 @@
 'use client';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -11,9 +11,17 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [ value, setValue ] = useLocalStorage({ key: 'login', initialValue: false })
-  console.log(value,setValue);
+  const [ value, setValue ] = useLocalStorage({ key: 'login', initialValue: 'false' })
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    if(value=="true"){
+      setIsAuthenticated(true)
+    }
+    return () => {
+    }
+  }, [value])
+  
 
   const login = () => {
     setIsAuthenticated(true);
